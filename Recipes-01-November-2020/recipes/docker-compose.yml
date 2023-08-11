@@ -1,0 +1,15 @@
+version: "3"
+services:
+  postgres_db:
+    image: postgres
+    restart: always
+    ports:
+      - "5433:5432"
+    volumes:
+      - ./postgresql:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: ************
+      POSTGRES_USER: ************
+      POSTGRES_DB: recipes
+      PDATA: /var/lib/postgresql/data/pgdata
+    container_name: postgres_all_projects

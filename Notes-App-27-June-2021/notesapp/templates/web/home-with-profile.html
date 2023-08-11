@@ -1,0 +1,48 @@
+{% extends "web/base.html" %}
+{% load static %}
+
+{% block main_content %}
+    <!--end notes container-->
+    {% if not profile %}
+        <!--no profile-->
+        <div class="body">
+            <!--headings-->
+            <h1>Enter Your Data</h1>
+            <!--end headings-->
+
+            <!--profile data form-->
+            <div class="form">
+                <form method="POST" action="{% url 'home_page' %}">
+                    {% csrf_token %}
+                    {{ add_form }}
+
+                    <input type="submit" value="SUBMIT"/>
+                </form>
+            </div>
+            <!--end profile data form-->
+        </div>
+        <!--end no profile-->
+    {% else %}
+        <h1>My Notes</h1>
+        {% if not notes %}
+            <!--no notes container-->
+            <h2>There are no notes.</h2>
+            <!--no notes container-->
+        {% else %}
+            {% for note in notes %}
+                <!--notes container-->
+                <div class="note-container">
+                    <h2>{{ note.title }} <img src="{{ note.image_url }} "/>
+                    </h2>
+
+                    <div class="right">
+                        <a class="button details" href="{% url 'details_note' pk=note.pk %}">Details</a>
+                        <a class="button edit" href="{% url 'edit_note' pk=note.pk %}">Edit</a>
+                        <a class="button delete" href="{% url 'delete_note' pk=note.pk %}">Delete</a>
+                    </div>
+                </div>
+
+            {% endfor %}
+        {% endif %}
+    {% endif %}
+{% endblock %}

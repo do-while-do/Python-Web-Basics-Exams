@@ -1,0 +1,15 @@
+{% load  static %}
+<header>
+    <nav>
+        <ul>
+            <li class="img"><img src="/static/images/note.png"/></li>
+            <li><a href="/">Notes</a></li>
+            {% if profile %}
+                <li class="right">
+                    <a href="{% url 'add_note' %}">Add Note</a>
+                    <a href="{% url 'profile_view' %}">Profile</a>
+                </li>
+            {% endif %}
+        </ul>
+    </nav>
+</header>

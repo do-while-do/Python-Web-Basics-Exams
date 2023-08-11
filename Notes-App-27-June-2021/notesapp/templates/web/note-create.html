@@ -1,0 +1,23 @@
+{% extends "web/base.html" %}
+{% load static %}
+
+{% block main_content %}
+
+    <div class="body">
+        <!--headings-->
+        <h1>Add Note</h1>
+        <!--headings-->
+
+        <!--note data form-->
+        <div class="form">
+            <form method="POST" action="{% url 'add_note' %}">
+                {% csrf_token %}
+                {{ add_form }}
+
+                <input type="submit" value="Publish"/>
+            </form>
+        </div>
+        <!--end note data form-->
+    </div>
+
+{% endblock %}

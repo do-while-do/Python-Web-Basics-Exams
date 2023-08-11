@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block main_content %}
+
+    <h1>Delete Recipe</h1>
+    <div class="items-container">
+        <div class="item">
+            <form method="POST" {% url 'delete_recipe' pk=recipe.id %}>
+                {% csrf_token %}
+                {{ delete_form }}
+                <input type="submit" class="button delete" value="Delete">
+            </form>
+        </div>
+    </div>
+{% endblock %}
