@@ -1,0 +1,16 @@
+{% load  static %}
+<header id="site-header">
+    <!-- Navigation -->
+    <nav class="navbar">
+        <section class="navbar-dashboard">
+            <a href="{% url 'home_page' %}">Dashboard</a>
+            {% if profile %}
+                <div id="user">
+                    <span>Welcome, Peter</span>
+                    <a class="button" href="{% url 'add_book' %}">Add Book</a>
+                    <a class="button" href="{% url 'profile_page' %}">Profile</a>
+                </div>
+            {% endif %}
+        </section>
+    </nav>
+</header>

@@ -1,0 +1,39 @@
+{% extends "web/base.html" %}
+{% load static %}
+
+{% block main_content %}
+    <!-- Dashboard Page-->
+    {% if not profile %}
+        <section id="register-page" class="register">
+            <form id="register-form" method="POST" action="{% url 'home_page' %}">
+                <fieldset>
+                    <legend>Profile Form</legend>
+                    {% csrf_token %}
+                    {{ add_form }}
+                    <input class="button submit" type="submit" value="Enter">
+                </fieldset>
+            </form>
+        </section>
+    {% else %}
+        <section id="dashboard-page" class="dashboard">
+            <h1>Dashboard</h1>
+            {% if not books %}
+                <!-- Display paragraph: If the user doesn't have any books  -->
+                <p class="no-books">No books in database!</p>
+                <!-- Display ul: with list-items for every books if any -->
+            {% else %}
+                <ul class="my-books-list">
+                    {% for book in books %}
+                        <li class="myBooks">
+                            <h3>{{ book.title }}</h3>
+                            <p>Type: {{ book.type }}</p>
+                            <p class="img"><img src="{{ book.image_url }}" alt="">
+                            </p>
+                            <a class="button" href="{% url 'book_details' pk=book.pk %}">Details</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </section>
+    {% endif %}
+{% endblock %}

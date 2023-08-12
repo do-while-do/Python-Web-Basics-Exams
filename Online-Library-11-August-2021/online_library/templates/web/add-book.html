@@ -1,0 +1,16 @@
+{% extends "web/base.html" %}
+{% load static %}
+
+{% block main_content %}
+    <section id="create-page" class="create">
+        <form id="create-form" method="POST" action="{% url 'add_book' %}">
+            <fieldset>
+                <legend>Add New Book</legend>
+                {% csrf_token %}
+                {{ add_form }}
+                <input class="button submit" type="submit" value="Add Book">
+            </fieldset>
+        </form>
+    </section>
+
+{% endblock %}
