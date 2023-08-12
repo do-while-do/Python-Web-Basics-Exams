@@ -34,3 +34,6 @@ class Note(models.Model):
     image_url = models.URLField(blank=False, null=False)
     description = models.TextField(blank=False, null=False)
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.title
