@@ -1,0 +1,26 @@
+{% load  static %}
+
+<header>
+    <!-- Navigation -->
+    <a id="logo" href="{% url 'home_page' %}">
+        <img id="logo-img" src="{% static 'images/logo.png' %}" alt="logo"/>
+    </a>
+
+    <nav>
+        {% if profile %}
+            <!-- If there is a user profile -->
+            <div class="user">
+                <a href="{% url 'dashboard_page' %}">Dashboard</a>
+                <a href="{% url 'fruit_create' %}">Add Fruit</a>
+                <a href="{% url 'profile_details' %}">Profile</a>
+            </div>
+        {% else %}
+            <!-- If user profile has NOT been created -->
+            <div class="guest">
+
+                <a href="{% url 'profile_create' %}">Create Profile</a>
+
+            </div>
+        {% endif %}
+    </nav>
+</header>
